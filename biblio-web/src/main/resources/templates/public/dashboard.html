@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Twitter -->
+    <meta name="twitter:site" content="@themepixels">
+    <meta name="twitter:creator" content="@themepixels">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shamcey">
+    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="twitter:image" content="http://themepixels.me/shamcey/img/shamcey-social.png">
+
+    <!-- Facebook -->
+    <meta property="og:url" content="http://themepixels.me/shamcey">
+    <meta property="og:title" content="Shamcey">
+    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
+
+    <meta property="og:image" content="http://themepixels.me/shamcey/img/shamcey-social.png">
+    <meta property="og:image:secure_url" content="http://themepixels.me/shamcey/img/shamcey-social.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+
+    <!-- Meta -->
+    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="author" content="ThemePixels">
+
+
+    <title>Catalogue</title>
+
+    <!-- Vendor css -->
+    <link th:href="@{/lib/font-awesome/css/font-awesome.css}" rel="stylesheet">
+    <link th:href="@{/lib/Ionicons/css/ionicons.css}" rel="stylesheet">
+    <link th:href="@{/lib/perfect-scrollbar/css/perfect-scrollbar.css}" rel="stylesheet">
+	<script th:href="@{https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js}" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+	<script th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js}" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+    <!-- Shamcey CSS -->
+    <link rel="stylesheet" th:href="@{/css/shamcey.css}">
+  </head>
+
+  <body>
+
+    <div class="sh-logopanel"  th:fragment="app-logopanel" >
+      <a th:href="@{/}" ><p class="h5 text-white" >WC Library <span class="badge badge-secondary">Europe</span></p></a>
+      <a id="navicon" href="" class="sh-navicon d-none d-xl-block"><i class="icon ion-navicon"></i></a>
+      <a id="naviconMobile" href="" class="sh-navicon d-xl-none"><i class="icon ion-navicon"></i></a>
+    </div><!-- sh-logopanel -->
+
+    <div class="sh-sideleft-menu" style="margin:0; padding:0;" th:fragment="app-sideleft-menu" >
+    	
+		<div class="card card-tab mg-t-20"  style="margin:0; padding:0;" >  
+           <div class="card-body">
+              <div id="tabUsers" class="tab-pane text-white active">
+      			<div class="media-list">
+                    <a th:each="a:${listeAuteurs}" th:href="@{/auteur/id/{id}(id=${a.id})}" class="media">
+                      <img width="50" height="60" class="rounded-circle" th:src="@{/auteur/photo/{id}(id=${a.id})}" >
+                      <div class="media-body">
+                        <h6><span th:text="${a.nom}" ></span></h6>
+                        <p>
+                        	<span th:if="${a.anneeDeces == null}" th:text="'Né en '+${a.anneeNaissance}" ></span>
+                    		<span th:if="${a.anneeDeces != null}" th:text="${a.anneeNaissance}+'-'+${a.anneeDeces}" ></span>
+                        </p>
+                      </div><!-- media-body -->
+                    </a><!-- media -->
+                    
+                  </div><!-- media-list -->
+			  </div><!-- tabUsers -->
+              
+		  </div><!-- card-body tab-content -->
+		</div>  <!-- sh-sideleft-menu -->
+    </div><!-- sh-sideleft-menu -->
+
+    <div class="sh-headpanel"  th:fragment="app-sh-headpanel" >
+      <div class="sh-headpanel-left">
+
+        <!-- START: HIDDEN IN MOBILE -->
+        
+        <!-- END: HIDDEN IN MOBILE -->
+
+        <!-- START: DISPLAYED IN MOBILE ONLY -->
+        <div class="dropdown dropdown-app-list">
+          <a href="" data-toggle="dropdown" class="dropdown-link">
+            <i class="icon ion-ios-keypad tx-18"></i>
+          </a>
+          <div class="dropdown-menu">
+            <div class="row no-gutters">
+              <div class="col-4">
+                <a href="" class="dropdown-menu-link">
+                  <div>
+                    <i class="icon ion-ios-folder-outline"></i>
+                    <span>Directory</span>
+                  </div>
+                </a>
+              </div><!-- col-4 -->
+              <div class="col-4">
+                <a href="" class="dropdown-menu-link">
+                  <div>
+                    <i class="icon ion-ios-calendar-outline"></i>
+                    <span>Events</span>
+                  </div>
+                </a>
+              </div><!-- col-4 -->
+              <div class="col-4">
+                <a href="" class="dropdown-menu-link">
+                  <div>
+                    <i class="icon ion-ios-gear-outline"></i>
+                    <span>Settings</span>
+                  </div>
+                </a>
+              </div><!-- col-4 -->
+            </div><!-- row -->
+          </div><!-- dropdown-menu -->
+        </div><!-- dropdown -->
+        <!-- END: DISPLAYED IN MOBILE ONLY -->
+
+      </div><!-- sh-headpanel-left -->
+
+      <div class="sh-headpanel-right" >        
+        <div class="dropdown dropdown-notification"  th:unless="${session.utilisateurCourant == null }" >
+          <a href="" data-toggle="dropdown" class="dropdown-link dropdown-link-notification">
+            <span class="badge badge-primary text-white" th:if="${session.panier == null}" >0</span>                    
+          	<span class="badge badge-primary text-white" th:if="${session.panier != null}" 
+          	      th:text="${#lists.size(session.panier.listeLivres)}"  ></span>  
+          </a>
+          <div class="dropdown-menu dropdown-menu-right"  th:unless="${session.panier == null || session.panier.listeLivres.empty}" >
+            <div class="media-list">
+              <!-- loop starts here -->
+              <a href="" class="media-list-link read overflow-auto"  >
+                <div class="media pd-x-20 pd-y-15"  th:each="l:${session.panier.listeLivres}">
+                  <img width="50%" height="100%" th:src="@{/livre/couverture/{id}(id=${l.id})}" class="wd-40 rounded-" alt="">
+                  <div class="media-body">
+                    <p class="tx-13 mg-b-0"><strong class="tx-medium" th:text="${l.titre}" ></strong> </p>
+                    <span class="tx-12" th:text="${l.auteur.nom}" ></span>
+                  </div>
+                </div><!-- media -->
+              </a>
+              <div class="media-list-footer bg-primary">
+                <a th:href="@{/public/pret/affichage-panier}" class="tx-12 text-white" >Afficher le panier</a>
+              </div>
+            </div><!-- media-list -->
+          </div><!-- dropdown-menu -->
+        </div>
+        <div class="dropdown dropdown-profile">
+          <a href="" data-toggle="dropdown" class="dropdown-link" th:unless="${session.utilisateurCourant == null }" >
+                <img width="50" height="60" class="wd-60 rounded-circle" th:src="@{/utilisateur/photo/{id}(id=${session.utilisateurCourant.id})}" >
+          </a>
+          <a th:href="@{/public/ajout-abonne-1}"  class="btn btn-success pd-x-20" th:if="${session.utilisateurCourant == null }" >
+            S'abonner
+          </a>
+          <a th:href="@{/page-login}"  class="btn btn-success pd-x-20" th:if="${session.utilisateurCourant == null }" >
+            Se connecter
+          </a>
+          <div class="dropdown-menu dropdown-menu-right"  th:unless="${session.utilisateurCourant == null }"  >
+            <div class="media align-items-center">
+            	 <img width="50" height="60" class="wd-60 rounded-circle" th:src="@{/utilisateur/photo/{id}(id=${session.utilisateurCourant.id})}" >
+            </div><!-- media -->
+            <hr>
+            <ul class="dropdown-profile-nav" >
+              <li><h6 class="tx-inverse tx-15 mg-b-5" th:text="${session.utilisateurCourant.email}"  ></h6></li>
+              <li><p class="mg-b-0 tx-12"   th:text="${session.utilisateurCourant.nom}" ></p></li>
+              <li><hr></li>
+              <li><a th:href="@{/private/profil-utilisateur}" ><i class="icon ion-ios-person"></i> Editer le profil</a></li>
+              <li><a th:href="@{/private/parametres-utilisateur}" ><i class="icon ion-ios-gear"></i> Paramètres</a></li>
+              <li><a th:href="@{/perform_logout}" ><i class="icon ion-power"></i> Se déconnecter</a></li>
+            </ul>
+          </div><!-- dropdown-menu -->
+        </div>
+      </div><!-- sh-headpanel-right -->
+    </div><!-- sh-headpanel -->
+	 <div class="sh-mainpanel">
+      <!--<div class="sh-breadcrumb">
+        <nav class="breadcrumb">
+          <a class="breadcrumb-item" th:href="@{/}" >Nos livres</a>
+        </nav>
+      </div> sh-breadcrumb -->
+      <div class="sh-pagetitle">
+        <div class="input-group">
+          <input type="search" class="form-control" placeholder="Recherche" >
+          <span class="input-group-btn">
+            <button class="btn"><i class="fa fa-search"></i></button>
+          </span><!-- input-group-btn -->
+        </div><!-- input-group -->
+        <div class="sh-pagetitle-left" th:unless = "${auteurCourant == null}" >
+          <div class="sh-pagetitle-icon border border-white"><img width="50" height="60" class="rounded-circle" th:src="@{/auteur/photo/{id}(id=${auteurCourant.id})}" ></div>
+          <div class="sh-pagetitle-title">
+          	<h2 class="text-primary" >Catalogue </h2>
+            <span th:text="${auteurCourant.nom}+' ('+${nbLivres}+')'" ></span>
+          </div><!-- sh-pagetitle-left-title -->
+        </div><!-- sh-pagetitle-left -->
+      </div><!-- sh-pagetitle -->
+
+      <div class="sh-pagebody" >
+      		<div class="container">
+      			 <div class="row mg-b-25">
+      			 	
+      			 	 <div class="form-control text-right bg-light border border-light"  >
+      			 	 	<nav aria-label="Page navigation example">
+  							<ul class="pagination justify-content-end">
+    							<li class="page-item"  >
+      								<a class="page-link" th:disabled = "${pageCourante<=2}"
+      								   th:href="@{/page/{numPage}(numPage=${pageCourante-2})}"><</a>
+    							</li>
+    							<li class="page-item" th:unless = "${pageCourante<=1}" >
+    								<a class="page-link"  th:href="@{/page/{numPage}(numPage=${pageCourante-1})}" >
+    									<span th:text="${pageCourante-1}" ></span>
+    								</a>
+    							</li>
+    							<li class="page-item">
+    								<a class="page-link bg-primary text-white" th:href="@{/page/{numPage}(numPage=${pageCourante})}" >
+    									<span th:text="${pageCourante}" ></span>
+    								</a>
+    							</li>
+    							<li class="page-item" th:unless = "${pageCourante>=nbPages}" > 
+    								<a class="page-link" th:href="@{/page/{numPage}(numPage=${pageCourante+1})}" >
+    									<span th:text="${pageCourante+1}" ></span>
+    								</a>
+    							</li>
+    							<li class="page-item">
+      								<a class="page-link" th:disabled = "${pageCourante>=nbPages-1}"
+      								   th:href="@{/page/{numPage}(numPage=${pageCourante+2})}">></a>
+    							</li>
+  							</ul>
+						</nav>
+      			 	  </div>
+    				  <div class="form-control col-lg-2 bg-light border border-light"   th:each="l:${listeLivres_Page}" >
+                  		 <a class="bg-light shortcut-icon border border-light" th:href="@{/public/page-livre/{id}(id=${l.id})}"   >         
+                    		<img width="75%" height="100%" th:src="@{/livre/couverture/{id}(id=${l.id})}" 
+                    			 th:title="${l.titre}"  >                        		             			                  			
+                		 </a>
+                	  </div><!-- col-4 -->
+  				</div><!-- row -->
+      		</div><!-- container -->
+      </div><!-- sh-pagebody -->
+   	  <hr class="mg-y-30">
+     <div class="sh-footer"   th:fragment="app-sh-footer" >    	
+        <div>Copyright &copy; 2021. All Rights Reserved. Christian Missionnary Fellowship International (CMFI)</div>
+        <div class="mg-t-10 mg-md-t-0">Designed by: <a th:href="@{https://ztfministry.org/fr/}" >ZTF Ministry</a></div>
+      </div><!-- sh-footer -->
+    </div><!-- sh-mainpanel -->
+
+    <script src="/lib/jquery/jquery.js"></script>
+    <script src="/lib/popper.js/popper.js"></script>
+    <script src="/lib/bootstrap/bootstrap.js"></script>
+    <script src="/lib/jquery-ui/jquery-ui.js"></script>
+    <script src="/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+    <script src="/lib/moment/moment.js"></script>
+    <script src="/lib/Flot/jquery.flot.js"></script>
+    <script src="/lib/Flot/jquery.flot.resize.js"></script>
+    <script src="/lib/flot-spline/jquery.flot.spline.js"></script>
+
+    <script src="/js/shamcey.js"></script>
+    <script src="/js/dashboard.js"></script>
+  </body>
+</html>

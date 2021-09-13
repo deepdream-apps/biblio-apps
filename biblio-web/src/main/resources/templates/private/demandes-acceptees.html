@@ -1,0 +1,159 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Twitter -->
+    <meta name="twitter:site" content="@themepixels">
+    <meta name="twitter:creator" content="@themepixels">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shamcey">
+    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="twitter:image" content="http://themepixels.me/shamcey/img/shamcey-social.png">
+
+    <!-- Facebook -->
+    <meta property="og:url" content="http://themepixels.me/shamcey">
+    <meta property="og:title" content="Shamcey">
+    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
+
+    <meta property="og:image" content="http://themepixels.me/shamcey/img/shamcey-social.png">
+    <meta property="og:image:secure_url" content="http://themepixels.me/shamcey/img/shamcey-social.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+
+    <!-- Meta -->
+    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="author" content="ThemePixels">
+
+
+    <title>Demandes de prêt acceptées</title>
+
+    <!-- vendor css -->
+    <link th:href="@{/lib/font-awesome/css/font-awesome.css}" rel="stylesheet" >
+    <link th:href="@{/lib/Ionicons/css/ionicons.css}" rel="stylesheet" >
+    <link th:href="@{/lib/perfect-scrollbar/css/perfect-scrollbar.css}" rel="stylesheet" >
+    <link th:href="@{/lib/datatables/jquery.dataTables.css}" rel="stylesheet" >
+    <link th:href="@{/lib/select2/css/select2.min.css}" rel="stylesheet" >
+
+    <!-- Shamcey CSS -->
+    <link rel="stylesheet" th:href="@{/css/shamcey.css}" >
+  </head>
+
+  <body>
+	
+	<div class="sh-logopanel" th:replace="private/dashboard.html :: app-logopanel"  ></div>  
+	
+	<div class="sh-sideleft-menu" th:replace="private/dashboard.html :: app-sideleft-menu"  ></div>  
+    
+    <div class="sh-headpanel" th:replace="private/dashboard.html :: app-headpanel"  ></div>  
+    
+    <div class="sh-mainpanel">
+      <div class="sh-breadcrumb">
+        <nav class="breadcrumb">
+          <a class="breadcrumb-ite float-right" th:href="@{/private/admin/ajout-auteur}" >
+          		<i class="fa fa-plus"></i> Nouveau
+          </a>
+        </nav>
+      </div><!-- sh-breadcrumb -->
+      <div class="sh-pagetitle">
+        <div class="input-group">
+          <input type="search" class="form-control" placeholder="Search">
+          <span class="input-group-btn">
+            <button class="btn"><i class="fa fa-search"></i></button>
+          </span><!-- input-group-btn -->
+        </div><!-- input-group -->
+        <div class="sh-pagetitle-left">
+          <div class="sh-pagetitle-icon"><i class="fa fa-user-circle-o"></i></div>
+          <div class="sh-pagetitle-title">
+            <h2>Demandes de prêt acceptées</h2>
+          </div><!-- sh-pagetitle-left-title -->
+        </div><!-- sh-pagetitle-left -->
+      </div><!-- sh-pagetitle -->
+      <div class="sh-pagebody">
+
+        <div class="card bd-primary mg-t-20">
+          <div class="card-header bg-primary tx-white">Liste des demandes de prêt acceptées</div>
+          <div class="card-body pd-sm-30">
+            <div class="table-wrapper">
+              <table id="datatable1" class="table  responsive" >
+                <thead class="text-white" >
+                  <tr>
+                  	<th>ID</th>
+                    <th>Nom</th>
+                    <th>Ville</th>
+                    <th>Date</th>
+                    <th>Date accord</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:if="${listePrets.empty}">
+            			<td colspan="6" >Aucune demande de prêt acceptée trouvée</td>
+        		  </tr>
+                  <tr th:each="e:${listePrets}" >
+                  	<td><span th:text="${e.id}" ></span></td>   
+                    <td><span th:text="${e.abonne.nom}+' '+${e.abonne.prenom}" ></span></td>
+                    <td><span th:text="${e.abonne.ville}+'/'+${e.abonne.pays}" ></span></td>   
+                    <td><span th:unless="${e.dateSoumission == null}" th:text="${#temporals.format(e.dateSoumission, 'dd/MM/yyyy')}"> </span></td>
+                     <td><span th:unless="${e.dateTraitement == null}" th:text="${#temporals.format(e.dateTraitement, 'dd/MM/yyyy')}"> </span></td>                    
+                  	<td>
+                       <div class="text-center" >
+                         <a class="btn btn-primary" title="Afficher" th:href="@{/private/operations/details-demandepret/{idPret}(idPret=${e.id})}" >
+                        	<i class="fa fa-eye" ></i>
+                          </a>
+                      	</div>                      						
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div><!-- table-wrapper -->
+          </div><!-- card-body -->
+        </div><!-- card -->
+
+        
+      </div><!-- sh-pagebody -->
+      <div class="sh-footer">
+        <div>Copyright &copy; 2017. All Rights Reserved. Shamcey Dashboard Admin Template</div>
+        <div class="mg-t-10 mg-md-t-0">Designed by: <a href="http://themepixels.me">ThemePixels</a></div>
+      </div><!-- sh-footer -->
+    </div><!-- sh-mainpanel -->
+
+    <script src="/lib/jquery/jquery.js"></script>
+    <script src="/lib/popper.js/popper.js"></script>
+    <script src="/lib/bootstrap/bootstrap.js"></script>
+    <script src="/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+    <script src="/lib/datatables/jquery.dataTables.js"></script>
+    <script src="/lib/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="/lib/select2/js/select2.min.js"></script>
+
+    <script src="/js/shamcey.js"></script>
+    <script>
+      $(function() {
+        'use strict';
+
+        $('#datatable1').DataTable({
+          responsive: true,
+          language: {
+            searchPlaceholder: 'Recherche...',
+            sSearch: '',
+            lengthMenu: '_MENU_ items/page',
+          }
+        });
+
+        $('#datatable2').DataTable({
+          bLengthChange: false,
+          searching: false,
+          responsive: true
+        });
+
+        // Select2
+        $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+
+      });
+    </script>
+  </body>
+</html>

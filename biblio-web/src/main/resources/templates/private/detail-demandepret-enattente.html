@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Twitter -->
+    <meta name="twitter:site" content="@themepixels">
+    <meta name="twitter:creator" content="@themepixels">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shamcey">
+    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="twitter:image" content="http://themepixels.me/shamcey/img/shamcey-social.png">
+
+    <!-- Facebook -->
+    <meta property="og:url" content="http://themepixels.me/shamcey">
+    <meta property="og:title" content="Shamcey">
+    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
+
+    <meta property="og:image" content="http://themepixels.me/shamcey/img/shamcey-social.png">
+    <meta property="og:image:secure_url" content="http://themepixels.me/shamcey/img/shamcey-social.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+
+    <!-- Meta -->
+    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="author" content="ThemePixels">
+
+
+    <title>Demande de prêt en attente</title>
+
+    <!-- vendor css -->
+    <link th:href="@{/lib/font-awesome/css/font-awesome.css}" rel="stylesheet" >
+    <link th:href="@{/lib/Ionicons/css/ionicons.css}" rel="stylesheet" >
+    <link th:href="@{/lib/perfect-scrollbar/css/perfect-scrollbar.css}" rel="stylesheet" >
+    <link th:href="@{/lib/datatables/jquery.dataTables.css}" rel="stylesheet" >
+    <link th:href="@{/lib/select2/css/select2.min.css}" rel="stylesheet" >
+
+    <!-- Shamcey CSS -->
+    <link rel="stylesheet" th:href="@{/css/shamcey.css}" >
+  </head>
+
+  <body>
+	
+	<div class="sh-logopanel" th:replace="private/dashboard.html :: app-logopanel"  ></div>  
+	
+	<div class="sh-sideleft-menu" th:replace="private/dashboard.html :: app-sideleft-menu"  ></div>  
+    
+    <div class="sh-headpanel" th:replace="private/dashboard.html :: app-headpanel"  ></div>  
+    
+    <div class="sh-mainpanel">
+      <div class="sh-breadcrumb">
+        <nav class="breadcrumb">
+          
+        </nav>
+      </div><!-- sh-breadcrumb -->
+      <div class="sh-pagetitle">
+        <div class="input-group">
+          
+        </div><!-- input-group -->
+        <div class="sh-pagetitle-left">
+          <div class="sh-pagetitle-icon"><i class="fa fa-file" ></i></div>
+          <div class="sh-pagetitle-title">
+            <h2>Demande de prêt </h2>
+          </div><!-- sh-pagetitle-left-title -->
+        </div><!-- sh-pagetitle-left -->
+      </div><!-- sh-pagetitle -->
+
+      <div class="sh-pagebody">
+
+        <div class="card bd-primary mg-t-20">
+          <div class="card-header bg-primary tx-white">Demande de prêt</div>
+          <div class="card-body pd-sm-30">
+            <div class="form-layout">
+            	<form th:action="@{/private/catalog/livre/maj}" enctype="multipart/form-data" method="post"    >
+              		<div class="row mg-b-25" >
+                		
+                		<div class="col-lg-3">
+                  			<div class="form-group" >
+                    			<label class="form-control-label">ID</label>
+                    			<input class="form-control" type="text" th:value="${pretExistant.id}" readonly >
+                  			</div>
+                  			
+                  			<div class="form-group" >
+                    			<label class="form-control-label">Abonné</label>
+                    			<input class="form-control" type="text" th:value="${pretExistant.abonne.nom}+' '+${pretExistant.abonne.prenom}" readonly >
+                  			</div>
+                  			
+                  			<div class="form-group" >
+                    			<label class="form-control-label">Date de la demande</label>
+                    			<input class="form-control" type="text" th:unless="${pretExistant.dateSoumission == null}" th:value="${#temporals.format(pretExistant.dateSoumission, 'dd/MM/yyyy')}" readonly >
+                  			</div>
+                  			
+                  			<div class="form-group" >
+                    			<label class="form-control-label">Statut</label>
+                    			<input class="form-control" type="text" th:value="${pretExistant.statut}" readonly >
+                  			</div>
+                		</div><!-- col-3 -->
+                		
+                		<div class="col-lg-9">
+                  			<div class="table-wrapper">
+              					<table id="datatable1" class="table responsive">
+                					<thead class="text-white" >
+                  						<tr>
+                    						<th></th>
+                    						<th>Titre</th>
+                    						<th>Auteur</th>
+                    						<th>Stock</th>
+                  						</tr>
+                					</thead>
+                					<tbody>
+                  						<tr th:if="${listeDetails.empty}">
+            								<td colspan="4" >Aucun livre trouvé</td>
+        		  						</tr>
+                  						<tr th:each="d:${listeDetails}" >
+                  							<td><img  th:unless="${d.livre == null}" width="30" height="40" th:src="@{/livre/couverture/{id}(id=${d.livre.id})}" ></td>
+                    						<td><span th:text="${d.livre.titre}" ></span></td>
+                    						<td><span th:unless="${d.livre.auteur == null}" th:text="${d.livre.auteur.nom}"> </span></td>
+                  							<td class="text-right" ><span th:text="${d.livre.quantite}" ></span></td>
+                  						</tr>
+                					</tbody>
+              					</table>
+            				</div><!-- table-wrapper -->
+                		</div><!-- col-9 -->               		
+              		</div><!-- row -->
+              	
+              		<div class="form-layout-footer float-right">
+                 		<a th:href="@{/private/operations/demandes-enattente}" class="btn btn-secondary">Annuler</a>
+                 		<a th:href="@{/private/operations/pret/refus/{id}(id=${pretExistant.id})}" class="btn btn-danger text-white" >Refuser</a>
+                 		<a th:href="@{/private/operations/pret/accord/{id}(id=${pretExistant.id})}" class="btn btn-success text-white" >Accepter</a>
+              		</div><!-- form-layout-footer -->
+              </form><!-- form -->	
+            </div><!-- form-layout -->
+          </div><!-- card-body -->
+        </div><!-- card -->
+
+ 
+
+      </div><!-- sh-pagebody -->
+      <div class="sh-footer">
+        <div>Copyright &copy; 2017. All Rights Reserved. Shamcey Dashboard Admin Template</div>
+        <div class="mg-t-10 mg-md-t-0">Designed by: <a href="http://themepixels.me">ThemePixels</a></div>
+      </div><!-- sh-footer -->
+    </div><!-- sh-mainpanel -->
+
+    <script src="/lib/jquery/jquery.js"></script>
+    <script src="/lib/popper.js/popper.js"></script>
+    <script src="/lib/bootstrap/bootstrap.js"></script>
+    <script src="/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+    <script src="/lib/datatables/jquery.dataTables.js"></script>
+    <script src="/lib/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="/lib/select2/js/select2.min.js"></script>
+    
+
+    <script src="../js/shamcey.js"></script>
+    <script>
+      $(function(){
+        'use strict';
+
+        $('.select2').select2({
+          minimumResultsForSearch: Infinity
+        });
+      })
+    </script>
+
+    <script src="/js/shamcey.js"></script>
+    <script>
+      $(function() {
+        'use strict';
+
+        $('#datatable1').DataTable({
+          responsive: true,
+          language: {
+            searchPlaceholder: 'Recherche...',
+            sSearch: '',
+            lengthMenu: '_MENU_ items/page',
+          }
+        });
+
+        $('#datatable2').DataTable({
+          bLengthChange: false,
+          searching: false,
+          responsive: true
+        });
+
+        // Select2
+        $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+
+      });
+    </script>
+  </body>
+</html>

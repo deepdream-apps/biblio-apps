@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Twitter -->
+    <meta name="twitter:site" content="@themepixels">
+    <meta name="twitter:creator" content="@themepixels">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shamcey">
+    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="twitter:image" content="http://themepixels.me/shamcey/img/shamcey-social.png">
+
+    <!-- Facebook -->
+    <meta property="og:url" content="http://themepixels.me/shamcey">
+    <meta property="og:title" content="Shamcey">
+    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
+
+    <meta property="og:image" content="http://themepixels.me/shamcey/img/shamcey-social.png">
+    <meta property="og:image:secure_url" content="http://themepixels.me/shamcey/img/shamcey-social.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+
+    <!-- Meta -->
+    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="author" content="ThemePixels">
+
+
+    <title>Ajout d'un utilisateur</title>
+
+    <!-- vendor css -->
+    <link th:href="@{/lib/font-awesome/css/font-awesome.css}" rel="stylesheet" >
+    <link th:href="@{/lib/Ionicons/css/ionicons.css}" rel="stylesheet" >
+    <link th:href="@{/lib/perfect-scrollbar/css/perfect-scrollbar.css}" rel="stylesheet" >
+    <link th:href="@{/lib/datatables/jquery.dataTables.css}" rel="stylesheet" >
+    <link th:href="@{/lib/select2/css/select2.min.css}" rel="stylesheet" >
+
+    <!-- Shamcey CSS -->
+    <link rel="stylesheet" th:href="@{/css/shamcey.css}" >
+  </head>
+
+  <body>
+	
+	<div class="sh-logopanel" th:replace="private/dashboard.html :: app-logopanel"  ></div>  
+	
+	<div class="sh-sideleft-menu" th:replace="private/dashboard.html :: app-sideleft-menu"  ></div>  
+    
+    <div class="sh-headpanel" th:replace="private/dashboard.html :: app-headpanel"  ></div>  
+    
+    <div class="sh-mainpanel">
+      <div class="sh-breadcrumb">
+        <nav class="breadcrumb">
+     
+        </nav>
+      </div><!-- sh-breadcrumb -->
+      <div class="sh-pagetitle">
+        <div class="input-group">
+          
+        </div><!-- input-group -->
+        <div class="sh-pagetitle-left">
+          <div class="sh-pagetitle-icon"><i class="fa fa-user" ></i></div>
+          <div class="sh-pagetitle-title">
+            <h2>Ajout d'un utilisateur</h2>
+          </div><!-- sh-pagetitle-left-title -->
+        </div><!-- sh-pagetitle-left -->
+      </div><!-- sh-pagetitle -->
+
+      <div class="sh-pagebody">
+
+        <div class="card bd-primary mg-t-20">
+          <div class="card-header bg-primary tx-white">Ajout d'un utilisateur</div>
+          <div class="card-body pd-sm-30">
+            <div class="form-layout" >
+            	<form th:action="@{/private/admin/utilisateur/ajout}" method="post"   >
+              		<div class="row mg-b-25">
+                		<div class="col-lg-4">
+                  			<div class="form-group">
+                    			<label class="form-control-label">Nom : <span class="tx-danger">*</span></label>
+                    			<input class="form-control" type="text" name="nom" placeholder="Saisir le nom" required >
+                  			</div>
+                		</div><!-- col-4 -->
+                		<div class="col-lg-4">
+                  			<div class="form-group">
+                    			<label class="form-control-label">Prénom : </label>
+                    			<input class="form-control" type="text" name="prenom"  placeholder="Saisir le prénom" >
+                  			</div>
+                		</div><!-- col-4 -->
+                		<div class="col-lg-4">
+                  			<div class="form-group">
+                    			<label class="form-control-label">Adresse E-mail : <span class="tx-danger">*</span></label>
+                    			<input class="form-control" type="text" name="email" placeholder="Saisir l'adresse e-mail" required >
+                  			</div>
+                		</div><!-- col-4 -->
+                		<div class="col-lg-4">
+                  			<div class="form-group mg-b-10-force">
+                    			<label class="form-control-label">Rôle : <span class="tx-danger">*</span></label>
+                    			<select class="form-control select2" name="role"  required >
+                    				<option value="3">Operateur</option>
+                      				<option value="2">Administrateur</option>
+                      				<option value="4">Editeur</option>
+                    			</select>
+                  			</div>
+                		</div><!-- col-4 -->
+                		<div class="col-lg-4">
+                  			<div class="form-group mg-b-10-force">
+                    			<label class="form-control-label">Numéro de téléphone : </label>
+                    			<input class="form-control" type="text" name="telephone"  placeholder="Saisir le numéro de téléphone" >
+                  			</div>
+                		</div><!-- col-4 -->
+                  		<div class="col-lg-4">
+                  			<div class="form-group mg-b-10-force">
+                    			<label class="form-control-label">Pays : </label>
+                    			<select class="form-control select2" name="pays"   >
+                    				<option value="France">France</option>
+                    				<option value="Allemagne">Allemagne</option>
+                    				<option value="Angleterre">Angleterre</option>
+                    				<option value="Cameroun">Cameroun</option>
+                    				<option value="Espagne">Espagne</option>
+                      				<option value="Norvège">Norvège</option>
+                      				<option value="Luxembourg">Luxembourg</option>
+                      				<option value="Portugal">Portugal</option>
+                      				<option value="Suisse" >Suisse</option>
+                    			</select>
+                  			</div>
+                		</div><!-- col-4 -->
+              		</div><!-- row -->
+              	
+
+              		<div class="form-layout-footer float-right">
+                 		<a th:href="@{/private/admin/utilisateurs}" class="btn btn-secondary">Annuler</a>
+                 		<button class="btn btn-success mg-r-5">Enregistrer</button>
+              		</div><!-- form-layout-footer -->
+              </form><!-- form -->	
+            </div><!-- form-layout -->
+          </div><!-- card-body -->
+        </div><!-- card -->
+
+ 
+
+      </div><!-- sh-pagebody -->
+      <div class="sh-footer">
+        <div>Copyright &copy; 2017. All Rights Reserved. Shamcey Dashboard Admin Template</div>
+        <div class="mg-t-10 mg-md-t-0">Designed by: <a href="http://themepixels.me">ThemePixels</a></div>
+      </div><!-- sh-footer -->
+    </div><!-- sh-mainpanel -->
+
+    <script src="/lib/jquery/jquery.js"></script>
+    <script src="/lib/popper.js/popper.js"></script>
+    <script src="/lib/bootstrap/bootstrap.js"></script>
+    <script src="/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+    <script src="/lib/datatables/jquery.dataTables.js"></script>
+    <script src="/lib/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="/lib/select2/js/select2.min.js"></script>
+    
+
+    <script src="../js/shamcey.js"></script>
+    <script>
+      $(function(){
+        'use strict';
+
+        $('.select2').select2({
+          minimumResultsForSearch: Infinity
+        });
+      })
+    </script>
+
+    <script src="/js/shamcey.js"></script>
+    <script>
+      $(function() {
+        'use strict';
+
+        $('#datatable1').DataTable({
+          responsive: true,
+          language: {
+            searchPlaceholder: 'Recherche...',
+            sSearch: '',
+            lengthMenu: '_MENU_ items/page',
+          }
+        });
+
+        $('#datatable2').DataTable({
+          bLengthChange: false,
+          searching: false,
+          responsive: true
+        });
+
+        // Select2
+        $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+
+      });
+    </script>
+  </body>
+</html>

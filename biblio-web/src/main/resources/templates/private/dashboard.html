@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Twitter -->
+    <meta name="twitter:site" content="@themepixels">
+    <meta name="twitter:creator" content="@themepixels">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shamcey">
+    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="twitter:image" content="http://themepixels.me/shamcey/img/shamcey-social.png">
+
+    <!-- Facebook -->
+    <meta property="og:url" content="http://themepixels.me/shamcey">
+    <meta property="og:title" content="Shamcey">
+    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
+
+    <meta property="og:image" content="http://themepixels.me/shamcey/img/shamcey-social.png">
+    <meta property="og:image:secure_url" content="http://themepixels.me/shamcey/img/shamcey-social.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+
+    <!-- Meta -->
+    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="author" content="ThemePixels">
+
+
+    <title>Private Dashboard</title>
+
+    <!-- Vendor css -->
+    <link th:href="@{/lib/font-awesome/css/font-awesome.css}" rel="stylesheet">
+    <link th:href="@{/lib/Ionicons/css/ionicons.css}" rel="stylesheet">
+    <link th:href="@{/lib/perfect-scrollbar/css/perfect-scrollbar.css}" rel="stylesheet">
+
+    <!-- Shamcey CSS -->
+    <link rel="stylesheet" th:href="@{/css/shamcey.css}" >
+  </head>
+
+  <body>
+
+    <div class="sh-logopanel"  th:fragment="app-logopanel" >
+      <a th:href="@{/}" ><p class="h5 text-white" >WC Library <span class="badge badge-secondary">Europe</span></p></a>
+      <a id="navicon" href="" class="sh-navicon d-none d-xl-block"><i class="icon ion-navicon"></i></a>
+      <a id="naviconMobile" href="" class="sh-navicon d-xl-none"><i class="icon ion-navicon"></i></a>
+    </div><!-- sh-logopanel -->
+
+    <div class="sh-sideleft-menu" th:fragment="app-sideleft-menu" >
+      <label class="sh-sidebar-label">Navigation</label>
+      <ul class="nav">
+        <li class="nav-item">
+          <a th:href="@{/private/dashboard}" class="nav-link active">
+            <i class="icon ion-ios-home-outline"></i>
+            <span>Dashboard</span>
+          </a>
+        </li><!-- nav-item -->
+        <li class="nav-item">
+          <a href="" class="nav-link with-sub">
+            <i class="icon ion-ios-bookmarks-outline"></i>
+            <span>Catalogue</span>
+          </a>
+          <ul class="nav-sub">
+            <li class="nav-item"><a th:href="@{/private/catalog/auteurs}" class="nav-link">Auteur</a></li>
+            <li class="nav-item"><a th:href="@{/private/catalog/categories}" class="nav-link">Catégorie</a></li>
+            <li class="nav-item"><a th:href="@{/private/catalog/livres}" class="nav-link">Livre</a></li>
+          </ul>
+        </li><!-- nav-item -->
+        <li class="nav-item">
+          <a href="" class="nav-link with-sub">
+            <i class="icon ion-ios-gear-outline"></i>
+            <span>Opérations</span>
+          </a>
+          <ul class="nav-sub">
+            <li class="nav-item"><a th:href="@{/private/operations/demandes-enattente}" class="nav-link">Demandes en attente</a></li>
+            <li class="nav-item"><a th:href="@{/private/operations/demandes-acceptees}" class="nav-link">Demandes acceptées</a></li>
+            <li class="nav-item"><a th:href="@{/private/operations/demandes-refusees}" class="nav-link">Demandes refusées</a></li>
+            <li class="nav-item"><a th:href="@{/private/operations/demandes-acheminees}" class="nav-link">Demandes acheminées</a></li>
+            <li class="nav-item"><a th:href="@{/private/operations/abonnes}" class="nav-link">Abonné</a></li>
+            <li class="nav-item"><a href="form-validation.html" class="nav-link">Paiement</a></li>   
+          </ul>
+        </li><!-- nav-item -->
+        <li class="nav-item">
+          <a href="" class="nav-link with-sub">
+            <i class="icon ion-ios-filing-outline"></i>
+            <span>Administration</span>
+          </a>
+          <ul class="nav-sub">
+            <li class="nav-item"><a th:href="@{/private/admin/utilisateurs}" class="nav-link">Utilisateur</a></li>
+            <li class="nav-item"><a th:href="@{/private/admin/sessions}" class="nav-link">Session</a></li>
+            <li class="nav-item"><a th:href="@{/private/admin/evenements}" class="nav-link">Evènement</a></li>
+          </ul>
+        </li><!-- nav-item -->
+        <li class="nav-item">
+          <a href="" class="nav-link with-sub">
+            <i class="icon ion-ios-analytics-outline"></i>
+            <span>Statistiques</span>
+          </a>
+          <ul class="nav-sub">
+            <li class="nav-item"><a href="chart-morris.html" class="nav-link">Statistiques</a></li>
+          </ul>
+        </li><!-- nav-item -->
+      </ul>
+    </div><!-- sh-sideleft-menu -->
+
+    <div class="sh-headpanel"  th:fragment="app-headpanel" >
+      <div class="sh-headpanel-left">
+
+        <!-- END: HIDDEN IN MOBILE -->
+
+        <!-- START: DISPLAYED IN MOBILE ONLY -->
+        <div class="dropdown dropdown-app-list">
+          <a href="" data-toggle="dropdown" class="dropdown-link">
+            <i class="icon ion-ios-keypad tx-18"></i>
+          </a>
+          <div class="dropdown-menu">
+            <div class="row no-gutters">
+              <div class="col-4" >
+                <a href="" class="dropdown-menu-link">
+                  <div>
+                    <i class="icon ion-ios-folder-outline"></i>
+                    <span>Directory</span>
+                  </div>
+                </a>
+              </div><!-- col-4 -->
+              <div class="col-4">
+                <a href="" class="dropdown-menu-link">
+                  <div>
+                    <i class="icon ion-ios-calendar-outline"></i>
+                    <span>Events</span>
+                  </div>
+                </a>
+              </div><!-- col-4 -->
+              <div class="col-4">
+                <a href="" class="dropdown-menu-link">
+                  <div>
+                    <i class="icon ion-ios-gear-outline"></i>
+                    <span>Settings</span>
+                  </div>
+                </a>
+              </div><!-- col-4 -->
+            </div><!-- row -->
+          </div><!-- dropdown-menu -->
+        </div><!-- dropdown -->
+        <!-- END: DISPLAYED IN MOBILE ONLY -->
+
+      </div><!-- sh-headpanel-left -->
+
+      <div class="sh-headpanel-right">
+        <div class="dropdown mg-r-10">
+          <a href="" class="dropdown-link dropdown-link-notification">
+            <i class="icon ion-ios-filing-outline tx-24"></i>
+          </a>
+        </div>
+        <div class="dropdown dropdown-notification">
+          <a href="" data-toggle="dropdown" class="dropdown-link dropdown-link-notification">
+            <i class="icon ion-ios-bell-outline tx-24"></i>
+            <span class="square-8"></span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            
+          </div><!-- dropdown-menu -->
+        </div>
+        <div class="dropdown dropdown-profile">
+          <a href="" data-toggle="dropdown" class="dropdown-link">
+             <img width="50" height="60" class="wd-60 rounded-circle" th:src="@{/utilisateur/photo/{id}(id=${session.utilisateurCourant.id})}" >
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <div class="media align-items-center">
+              <img width="50" height="60" class="wd-60 ht-60 rounded-circle bd pd-5" th:src="@{/utilisateur/photo/{id}(id=${session.utilisateurCourant.id})}" >
+            </div><!-- media -->
+            <hr>
+            <ul class="dropdown-profile-nav" >
+              <li><h6 class="tx-inverse tx-15 mg-b-5" th:text="${session.utilisateurCourant.email}"  ></h6></li>
+              <li><p class="mg-b-0 tx-12"   th:text="${session.utilisateurCourant.nom}" ></p></li>
+              <li><hr></li>
+              <li><a th:href="@{/private/profil-utilisateur}" ><i class="icon ion-ios-person"></i> Editer le profil</a></li>
+              <li><a th:href="@{/private/parametres-utilisateur}" ><i class="icon ion-ios-gear"></i> Paramètres</a></li>
+              <li><a th:href="@{/perform_logout}" ><i class="icon ion-power"></i> Se déconnecter</a></li>
+            </ul>
+          </div><!-- dropdown-menu -->
+        </div>
+      </div><!-- sh-headpanel-right -->
+    </div><!-- sh-headpanel -->
+
+    <div class="sh-mainpanel">
+      <div class="sh-breadcrumb">
+        <nav class="breadcrumb">
+          <span class="breadcrumb-item active">Dashboard</span>
+        </nav>
+      </div><!-- sh-breadcrumb -->
+      <div class="sh-pagetitle">
+        <div class="input-group">
+          <input type="search" class="form-control" placeholder="Search">
+          <span class="input-group-btn">
+            <button class="btn"><i class="fa fa-search"></i></button>
+          </span><!-- input-group-btn -->
+        </div><!-- input-group -->
+        <div class="sh-pagetitle-left">
+          <div class="sh-pagetitle-icon"><i class="icon ion-ios-home"></i></div>
+          <div class="sh-pagetitle-title">
+            <h2>Dashboard</h2>
+          </div><!-- sh-pagetitle-left-title -->
+        </div><!-- sh-pagetitle-left -->
+      </div><!-- sh-pagetitle -->
+
+      <div class="sh-pagebody">
+        <div class="row row-sm">
+          <div class="col-lg-8">
+            <div class="row row-xs bg-light" >
+              <div class="col-6 col-sm-4 col-md" th:each="lc : ${session.top5Livres}" >
+              	 <div>
+                	<a th:href="@{/public/page-livre/{id}(id=${lc.livre.id})}" class="bg-light border border-light shortcut-icon" >
+                  		<img width="80%" height="100%" th:src="@{/livre/couverture/{id}(id=${lc.livre.id})}"  alt="">
+                	</a>
+                </div>
+              </div><!-- col -->
+            </div><!-- row -->
+
+            <div class="card bd-primary mg-t-20">
+              <div class="card-header bg-primary tx-white" >Livres les plus demandés</div>
+              <div class="table-responsive">
+                <table class="table table-striped mg-b-0">
+                  <tbody>
+                    <tr  th:each="lc : ${session.topLivres}" >
+                      <td><img width="30" height="40" th:src="@{/livre/couverture/{id}(id=${lc.livre.id})}" ></td>
+                       <td><span th:text="${lc.livre.titre}" ></span></td>
+                       <td><span th:unless="${lc.livre.auteur == null}" th:text="${lc.livre.auteur.nom}"> </span></td> 
+                       <td><span th:text="${lc.nbDemandes}"> </span></td>               						
+                    </tr>
+                  </tbody>
+                </table>
+              </div><!-- table-responsive -->
+            </div><!-- card -->
+
+          </div><!-- col-8 -->
+          <div class="col-lg-4 mg-t-20 mg-lg-t-0">
+            <div class="alert alert-primary bd bd-primary pd-25 mg-b-20">
+              <h6 class="tx-14 mg-b-15" >Information</h6>
+              <p class="mg-b-0 op-8" >Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna.</p>
+            </div><!-- alert -->
+
+            <div class="card bd-primary mg-t-20">
+              <div class="card-header bg-primary tx-white" >Catégories les plus demandées</div>
+              <div class="table-responsive">
+                <table class="table table-striped mg-b-0">
+                  <tbody>
+                    <tr  th:each="cc : ${session.topCategories}" >
+                       <td><span th:text="${cc.categorie.libelle}" ></span></td>
+                       <td><span th:text="${cc.nbDemandes}"> </span></td>               						
+                    </tr>
+                  </tbody>
+                </table>
+              </div><!-- table-responsive -->
+            </div><!-- card -->
+            
+            <div class="card bd-primary mg-t-20">
+              <div class="card-header bg-primary tx-white" >Auteurs les plus populaires</div>
+              <div class="table-responsive">
+                <table class="table table-striped mg-b-0">
+                  <tbody>
+                    <tr  th:each="ac : ${session.topAuteurs}" >
+                       <td><img class="rounded-circle" width="38" height="45" th:src="@{/auteur/photo/{id}(id=${ac.auteur.id})}" ></td>
+                       <td><span th:text="${ac.auteur.nom}"> </span></td> 
+                       <td><span th:text="${ac.nbDemandes}"> </span></td>               						
+                    </tr>
+                  </tbody>
+                </table>
+              </div><!-- table-responsive -->
+            </div><!-- card -->
+            
+          </div><!-- col-4 -->
+        </div><!-- row -->
+      </div><!-- sh-pagebody -->
+      <div class="sh-footer">
+        <div>Copyright &copy; 2017. All Rights Reserved. CMCI</div>
+        <div class="mg-t-10 mg-md-t-0">Designed by: <a href="http://themepixels.me">ZTF Ministry</a></div>
+      </div><!-- sh-footer -->
+    </div><!-- sh-mainpanel -->
+
+    <script src="/lib/jquery/jquery.js"></script>
+    <script src="/lib/popper.js/popper.js"></script>
+    <script src="/lib/bootstrap/bootstrap.js"></script>
+    <script src="/lib/jquery-ui/jquery-ui.js"></script>
+    <script src="/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+    <script src="/lib/moment/moment.js"></script>
+    <script src="/lib/Flot/jquery.flot.js"></script>
+    <script src="/lib/Flot/jquery.flot.resize.js"></script>
+    <script src="/lib/flot-spline/jquery.flot.spline.js"></script>
+
+    <script src="/js/shamcey.js"></script>
+    <script src="/js/dashboard.js"></script>
+  </body>
+</html>
